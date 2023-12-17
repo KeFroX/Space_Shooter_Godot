@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://chwd08f83pnwi"]
+
+[ext_resource type="PackedScene" path="res://scenes/ui_life.tscn" id="1_hcxss"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_qyuf1"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qyuf1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LblLevel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Niveau : 1"
+
+[node name="LblScore" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Score : 0"
+
+[node name="Lives" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="UILife" parent="VBoxContainer/Lives" instance=ExtResource("1_hcxss")]
+layout_mode = 2
+
+[node name="UILife2" parent="VBoxContainer/Lives" instance=ExtResource("1_hcxss")]
+layout_mode = 2
+
+[node name="UILife3" parent="VBoxContainer/Lives" instance=ExtResource("1_hcxss")]
+layout_mode = 2

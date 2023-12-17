@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://o806n5p8xg65"]
+
+[ext_resource type="PackedScene" uid="uid://qo67e7jljdsi" path="res://scenes/player.tscn" id="1_46p50"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_tqv4a"]
+[ext_resource type="PackedScene" uid="uid://csecgrh6sl7eu" path="res://scenes/asteroid.tscn" id="3_jgvei"]
+[ext_resource type="AudioStream" uid="uid://c01p7l641v7jp" path="res://assets/audio/sfx_laser2.wav" id="4_d6s0x"]
+[ext_resource type="PackedScene" uid="uid://chwd08f83pnwi" path="res://scenes/hud.tscn" id="5_1nenu"]
+[ext_resource type="PackedScene" uid="uid://bec2navabm6ik" path="res://scenes/pause_menu.tscn" id="6_s3knt"]
+[ext_resource type="PackedScene" uid="uid://k1fxbetrspqm" path="res://scenes/settings_menu.tscn" id="7_aoqxx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_874r2"]
+size = Vector2(1153, 647)
+
+[sub_resource type="GDScript" id="GDScript_4q8cx"]
+script/source = "extends CanvasLayer
+
+@onready var pause_menu = $PauseMenu
+@onready var settings_menu = $SettingsMenu
+
+func _ready():
+	pass
+"
+
+[node name="Game" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_tqv4a")
+
+[node name="Player" parent="." instance=ExtResource("1_46p50")]
+position = Vector2(391, 461)
+
+[node name="Asteroids" type="Node2D" parent="."]
+
+[node name="Asteroid" parent="Asteroids" instance=ExtResource("3_jgvei")]
+position = Vector2(518, 243)
+
+[node name="Toric_world" type="Area2D" parent="."]
+visible = false
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Toric_world"]
+position = Vector2(575, 324)
+shape = SubResource("RectangleShape2D_874r2")
+debug_color = Color(0, 0.592157, 0.741176, 0)
+
+[node name="Lasers" type="Node2D" parent="."]
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="LaserShoot" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("4_d6s0x")
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = SubResource("GDScript_4q8cx")
+
+[node name="HUD" parent="UI" instance=ExtResource("5_1nenu")]
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("6_s3knt")]
+visible = false
+
+[node name="SettingsMenu" parent="UI" instance=ExtResource("7_aoqxx")]
+visible = false
+
+[connection signal="body_exited" from="Toric_world" to="." method="_on_toric_world_body_exited"]

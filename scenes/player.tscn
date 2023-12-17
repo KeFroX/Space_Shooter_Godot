@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://qo67e7jljdsi"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_8f638"]
+[ext_resource type="Texture2D" uid="uid://b5vy7f5xyaawh" path="res://assets/texture/ship/player_ship_1_boost.png" id="2_y5enr"]
+[ext_resource type="Texture2D" uid="uid://c70h4ym2m7oyp" path="res://assets/texture/ship/player_ship_1_mouvement2.png" id="3_00or7"]
+[ext_resource type="Texture2D" uid="uid://btget47xhaspn" path="res://assets/texture/ship/player_ship_1_stop.png" id="4_gofqh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c1em0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_y5enr")
+}],
+"loop": true,
+"name": &"boost",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_00or7")
+}],
+"loop": true,
+"name": &"mouvement",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_gofqh")
+}],
+"loop": true,
+"name": &"stop",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vsf8e"]
+radius = 24.0208
+
+[node name="Player" type="RigidBody2D"]
+process_mode = 1
+collision_layer = 2
+collision_mask = 5
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_8f638")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 13)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_c1em0")
+animation = &"boost"
+
+[node name="Laser" type="Marker2D" parent="."]
+position = Vector2(0, -41)
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vsf8e")
