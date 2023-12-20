@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c3jajpd3lp3sr"]
 
 [ext_resource type="Script" path="res://scripts/laser.gd" id="1_qucag"]
-[ext_resource type="Texture2D" uid="uid://82gql71dn7di" path="res://assets/texture/laser/laserBlue01.png" id="2_2iusl"]
+[ext_resource type="Texture2D" uid="uid://c5bevn11ca41w" path="res://assets/texture/laser/laser_blue.png" id="2_apnfe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rh0tj"]
 radius = 3.16228
@@ -18,7 +18,7 @@ script = ExtResource("1_qucag")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 7)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_2iusl")
+texture = ExtResource("2_apnfe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)

@@ -1,0 +1,149 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsp12hn3rwmoa"]
+
+[ext_resource type="Script" path="res://scripts/settings_modifiy_skin.gd" id="1_e4sa0"]
+[ext_resource type="Texture2D" uid="uid://c5bevn11ca41w" path="res://assets/texture/laser/laser_blue.png" id="2_e8jp2"]
+[ext_resource type="Texture2D" uid="uid://dnkj2vhuyw55s" path="res://assets/texture/ship/player_ship_green.png" id="3_cfc3b"]
+[ext_resource type="Texture2D" uid="uid://ep2dnprmp7xk" path="res://assets/texture/fire/fire_blue_mouvement.png" id="4_vko2k"]
+[ext_resource type="Texture2D" uid="uid://fwtv8u0jm5yd" path="res://assets/texture/asteroid/asteroid_brown_big.png" id="5_yyn5i"]
+
+[node name="SettingsModifiySkin" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e4sa0")
+
+[node name="BtnBack" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_right = 61.0
+grow_vertical = 0
+text = "Retour"
+
+[node name="BtnSave" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -53.0
+offset_top = -126.0
+offset_right = 53.0
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Sauvegarder"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -278.5
+offset_right = 56.0
+offset_bottom = -2.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+theme_override_constants/separation = 5
+
+[node name="HBoxAsteroid" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="BtnPreviousAsteroid" type="Button" parent="VBoxContainer/HBoxAsteroid"]
+layout_mode = 2
+text = "<"
+
+[node name="AsteroidTexture" type="TextureRect" parent="VBoxContainer/HBoxAsteroid"]
+layout_mode = 2
+texture = ExtResource("5_yyn5i")
+
+[node name="BtnNextAsteroid" type="Button" parent="VBoxContainer/HBoxAsteroid"]
+layout_mode = 2
+text = ">"
+
+[node name="HBoxLaser" type="HBoxContainer" parent="VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(180, 56)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 66
+alignment = 1
+
+[node name="BtnPreviousLaser" type="Button" parent="VBoxContainer/HBoxLaser"]
+layout_mode = 2
+text = "<"
+
+[node name="LaserTexture" type="TextureRect" parent="VBoxContainer/HBoxLaser"]
+layout_mode = 2
+texture = ExtResource("2_e8jp2")
+stretch_mode = 3
+
+[node name="BtnNextLaser" type="Button" parent="VBoxContainer/HBoxLaser"]
+layout_mode = 2
+text = ">"
+
+[node name="HBoxShip" type="HBoxContainer" parent="VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(180, 78)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="BtnPreviousShip" type="Button" parent="VBoxContainer/HBoxShip"]
+layout_mode = 2
+text = "<"
+
+[node name="ShipTexture" type="TextureRect" parent="VBoxContainer/HBoxShip"]
+layout_mode = 2
+texture = ExtResource("3_cfc3b")
+stretch_mode = 5
+
+[node name="BtnNextShip" type="Button" parent="VBoxContainer/HBoxShip"]
+layout_mode = 2
+text = ">"
+
+[node name="HBoxFire" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 65
+alignment = 1
+
+[node name="BtnPreviousFire" type="Button" parent="VBoxContainer/HBoxFire"]
+layout_mode = 2
+text = "<"
+
+[node name="FireTexture" type="TextureRect" parent="VBoxContainer/HBoxFire"]
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("4_vko2k")
+stretch_mode = 3
+
+[node name="BtnNextFire" type="Button" parent="VBoxContainer/HBoxFire"]
+layout_mode = 2
+text = ">"
+
+[connection signal="pressed" from="BtnSave" to="." method="_on_btn_save_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxAsteroid/BtnPreviousAsteroid" to="." method="_on_btn_previous_asteroid_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxAsteroid/BtnNextAsteroid" to="." method="_on_btn_next_asteroid_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxLaser/BtnPreviousLaser" to="." method="_on_btn_previous_laser_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxLaser/BtnNextLaser" to="." method="_on_btn_next_laser_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxShip/BtnPreviousShip" to="." method="_on_btn_previous_ship_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxShip/BtnNextShip" to="." method="_on_btn_next_ship_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxFire/BtnPreviousFire" to="." method="_on_btn_previous_fire_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxFire/BtnNextFire" to="." method="_on_btn_next_fire_pressed"]

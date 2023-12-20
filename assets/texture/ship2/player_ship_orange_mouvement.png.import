@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://82gql71dn7di"
-path="res://.godot/imported/laserBlue01.png-b2ccde6eec75011a4514effecbbf5b14.ctex"
+uid="uid://d21b2b636tdp7"
+path="res://.godot/imported/player_ship_orange_mouvement.png-a4dbcc042038f09388accd8bc541e7e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/texture/laser/laserBlue01.png"
-dest_files=["res://.godot/imported/laserBlue01.png-b2ccde6eec75011a4514effecbbf5b14.ctex"]
+source_file="res://assets/texture/ship2/player_ship_orange_mouvement.png"
+dest_files=["res://.godot/imported/player_ship_orange_mouvement.png-a4dbcc042038f09388accd8bc541e7e5.ctex"]
 
 [params]
 

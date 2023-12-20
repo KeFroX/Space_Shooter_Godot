@@ -3,6 +3,7 @@ extends Node
 var asteroids_cshapes : Dictionary = {}
 var asteroids_png : Dictionary = {}
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	asteroids_cshapes["LARGE"] = preload("res://ressources/asteroid_cshap_big.tres")

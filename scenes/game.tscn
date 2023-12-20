@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://o806n5p8xg65"]
+[gd_scene load_steps=11 format=3 uid="uid://o806n5p8xg65"]
 
 [ext_resource type="PackedScene" uid="uid://qo67e7jljdsi" path="res://scenes/player.tscn" id="1_46p50"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_tqv4a"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://chwd08f83pnwi" path="res://scenes/hud.tscn" id="5_1nenu"]
 [ext_resource type="PackedScene" uid="uid://bec2navabm6ik" path="res://scenes/pause_menu.tscn" id="6_s3knt"]
 [ext_resource type="PackedScene" uid="uid://k1fxbetrspqm" path="res://scenes/settings_menu.tscn" id="7_aoqxx"]
+[ext_resource type="PackedScene" uid="uid://bsp12hn3rwmoa" path="res://scenes/settings_modifiy_skin.tscn" id="8_b6q1r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_874r2"]
 size = Vector2(1153, 647)
@@ -60,5 +61,7 @@ visible = false
 
 [node name="SettingsMenu" parent="UI" instance=ExtResource("7_aoqxx")]
 visible = false
+
+[node name="SettingsModifiySkin" parent="UI" instance=ExtResource("8_b6q1r")]
 
 [connection signal="body_exited" from="Toric_world" to="." method="_on_toric_world_body_exited"]

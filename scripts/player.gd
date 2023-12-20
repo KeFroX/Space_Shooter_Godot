@@ -4,7 +4,8 @@ class_name Player
 signal laser_shoot(laser)
 
 @onready var collion = $Collision
-@onready var sprite = $Sprite
+@onready var sprite : Sprite2D = $Sprite
+@onready var sprite_fire : AnimatedSprite2D = $SpriteEffect
 @onready var laser_position = $Laser
 
 var laser_scene = preload("res://scenes/laser.tscn")
@@ -25,9 +26,24 @@ var reserve_boost = 200 :
 		if !can_boost and value > 70:
 			can_boost = true
 
-# Called when the node enters the scene tree for the first time.o
+
+
 func _ready():
-	pass
+	change_skin()
+	
+	
+func change_skin():
+	var path : String
+	var ship = GlobalSkin.player["color_ship"]
+	print(ship)
+	var fire = GlobalSkin.player["color_fire"]
+	sprite.texture = ResourceLoader.load("res://assets/texture/ship/player_ship_" + ship + ".png")
+	
+	path = "res://assets/texture/fire/fire_" + fire +"_boost.png"
+	sprite_fire.sprite_frames.set_frame("boost", 0, ResourceLoader.load(path))
+	
+	path = "res://assets/texture/fire/fire_" + fire +"_mouvement.png"
+	sprite_fire.sprite_frames.set_frame("mouvement", 0, ResourceLoader.load(path))
 
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_boost") and can_boost:
@@ -58,15 +74,15 @@ func shoot_laser():
 	l.rotation = rotation
 	emit_signal("laser_shoot", l)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
 	if Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
 		if Input.is_action_pressed("ui_boost") and can_boost:
-			sprite.play("boost")
+			sprite_fire.play("boost")
 		else:
-			sprite.play("mouvement")		
+			sprite_fire.play("mouvement")		
 	else:
-		sprite.play("stop")
+		sprite_fire.play("stop")
 	
 	if Input.is_action_pressed("shoot"):
 		if !is_shoot_cd:

@@ -1,13 +1,15 @@
 extends ToreWorldRigidBody
 class_name Laser
 
+@onready var sprite = $Sprite2D
+
 @export var life_time = 100
 
 @export var speed := 500.0
 var mouvement_vector := Vector2(0, -1)
 
 func _ready():
-	pass
+	sprite.texture = GlobalSkin.texture_laser
 
 func _process(delta):
 	if life_time > 0:

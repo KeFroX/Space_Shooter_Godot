@@ -1,15 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://qo67e7jljdsi"]
+[gd_scene load_steps=8 format=3 uid="uid://qo67e7jljdsi"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_8f638"]
-[ext_resource type="Texture2D" uid="uid://b5vy7f5xyaawh" path="res://assets/texture/ship/player_ship_1_boost.png" id="2_y5enr"]
-[ext_resource type="Texture2D" uid="uid://c70h4ym2m7oyp" path="res://assets/texture/ship/player_ship_1_mouvement2.png" id="3_00or7"]
-[ext_resource type="Texture2D" uid="uid://btget47xhaspn" path="res://assets/texture/ship/player_ship_1_stop.png" id="4_gofqh"]
+[ext_resource type="Texture2D" uid="uid://c3t6116e0er8x" path="res://assets/texture/ship/player_ship_blue.png" id="2_74hrr"]
+[ext_resource type="Texture2D" uid="uid://dinqkc5q2d00l" path="res://assets/texture/fire/fire_blue_boost.png" id="3_18s5x"]
+[ext_resource type="Texture2D" uid="uid://ep2dnprmp7xk" path="res://assets/texture/fire/fire_blue_mouvement.png" id="4_aku32"]
+[ext_resource type="Texture2D" uid="uid://c0b0hhr3kaxm3" path="res://assets/texture/fire/fire_stop.png" id="5_dgjpm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c1em0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_y5enr")
+"texture": ExtResource("3_18s5x")
 }],
 "loop": true,
 "name": &"boost",
@@ -17,7 +18,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_00or7")
+"texture": ExtResource("4_aku32")
 }],
 "loop": true,
 "name": &"mouvement",
@@ -25,7 +26,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_gofqh")
+"texture": ExtResource("5_dgjpm")
 }],
 "loop": true,
 "name": &"stop",
@@ -33,7 +34,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vsf8e"]
-radius = 24.0208
+radius = 22.0227
 
 [node name="Player" type="RigidBody2D"]
 process_mode = 1
@@ -44,14 +45,19 @@ max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_8f638")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 13)
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
 scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_74hrr")
+
+[node name="SpriteEffect" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 33)
 sprite_frames = SubResource("SpriteFrames_c1em0")
-animation = &"boost"
+animation = &"stop"
 
 [node name="Laser" type="Marker2D" parent="."]
 position = Vector2(0, -41)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_vsf8e")

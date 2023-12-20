@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var player = $Player
+@onready var player : Player = $Player
 @onready var lasers = $Lasers
 @onready var asteroids = $Asteroids
 @onready var toric_world_shape = $Toric_world/CollisionShape2D
@@ -8,6 +8,7 @@ extends Node2D
 @onready var hud = $UI/HUD
 @onready var ui_pause = $UI/PauseMenu
 @onready var ui_settings_menu = $UI/SettingsMenu
+@onready var ui_settings_modifiy_skin = $UI/SettingsModifiySkin
 
 var asteroid_scene = preload("res://scenes/asteroid.tscn")
 
@@ -40,12 +41,18 @@ func _ready():
 	
 	ui_settings_menu.connect("game_settings_menu_back", game_settings_menu_back)
 	
+	ui_settings_modifiy_skin.connect("change_skin", change_skin)
+	
 	for asteroid in asteroids.get_children():
 		asteroid.connect("exploded", _on_asteroid_exploded)
 
 func _process(delta):
 	if Input.is_action_just_pressed("escape"):
 		game_pause()
+
+func change_skin():
+	GlobalSkin.change_skin()
+	player.change_skin()
 
 func game_settings_menu_back():
 	ui_pause.visible = true
@@ -71,13 +78,13 @@ func game_restart():
 	
 func _on_asteroid_exploded(pos, size, points):
 	score += points
-	if !Asteroid.AsteroidSize.SMALL == size:
+	if !Asteroid.AsteroidSize.TINY == size:
 		for i in range(2):
 			match size:
-				Asteroid.AsteroidSize.LARGE:
+				Asteroid.AsteroidSize.BIG:
 					spawn_asteroid(pos, Asteroid.AsteroidSize.MEDIUM)				
 				Asteroid.AsteroidSize.MEDIUM:
-					spawn_asteroid(pos, Asteroid.AsteroidSize.SMALL)
+					spawn_asteroid(pos, Asteroid.AsteroidSize.TINY)
 	else :
 		small_asteroid_explode += 1
 		print(small_asteroid_explode)
@@ -93,7 +100,7 @@ func next_level():
 	var height = toric_world_shape.position.y * 2
 	for i in game_level:		
 		var random_pos = Vector2(randi_range(0, witdh), randi_range(0, height))
-		spawn_asteroid(random_pos, Asteroid.AsteroidSize.LARGE)
+		spawn_asteroid(random_pos, Asteroid.AsteroidSize.BIG)
 	print("Niveau : " + str(game_level))
 	
 	

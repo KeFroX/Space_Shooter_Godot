@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c70h4ym2m7oyp"
-path="res://.godot/imported/player_ship_1_mouvement2.png-eb31ea418c6054c5638a6693526e52f0.ctex"
+uid="uid://colhrdeorlgdg"
+path="res://.godot/imported/player_ship_red_stop.png-52cb86c9657b4e181e1e1463c6ac116b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/texture/ship/player_ship_1_mouvement2.png"
-dest_files=["res://.godot/imported/player_ship_1_mouvement2.png-eb31ea418c6054c5638a6693526e52f0.ctex"]
+source_file="res://assets/texture/ship2/player_ship_red_stop.png"
+dest_files=["res://.godot/imported/player_ship_red_stop.png-52cb86c9657b4e181e1e1463c6ac116b.ctex"]
 
 [params]
 

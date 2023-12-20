@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpe6iusdgnfrr"
-path="res://.godot/imported/player_ship_4_boost.png-fb5d2f541806ce7d76eaadd7fd6b0954.ctex"
+uid="uid://c0jspo8mmjstr"
+path="res://.godot/imported/player_ship_green_stop.png-1dbed624204c95aedf88e79332deaed8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/texture/ship/player_ship_4_boost.png"
-dest_files=["res://.godot/imported/player_ship_4_boost.png-fb5d2f541806ce7d76eaadd7fd6b0954.ctex"]
+source_file="res://assets/texture/ship2/player_ship_green_stop.png"
+dest_files=["res://.godot/imported/player_ship_green_stop.png-1dbed624204c95aedf88e79332deaed8.ctex"]
 
 [params]
 
