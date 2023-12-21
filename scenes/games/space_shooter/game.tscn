@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://o806n5p8xg65"]
+[gd_scene load_steps=12 format=3 uid="uid://o806n5p8xg65"]
 
-[ext_resource type="PackedScene" uid="uid://qo67e7jljdsi" path="res://scenes/player.tscn" id="1_46p50"]
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_tqv4a"]
-[ext_resource type="PackedScene" uid="uid://csecgrh6sl7eu" path="res://scenes/asteroid.tscn" id="3_jgvei"]
-[ext_resource type="AudioStream" uid="uid://c01p7l641v7jp" path="res://assets/audio/sfx_laser2.wav" id="4_d6s0x"]
-[ext_resource type="PackedScene" uid="uid://chwd08f83pnwi" path="res://scenes/hud.tscn" id="5_1nenu"]
-[ext_resource type="PackedScene" uid="uid://bec2navabm6ik" path="res://scenes/pause_menu.tscn" id="6_s3knt"]
-[ext_resource type="PackedScene" uid="uid://k1fxbetrspqm" path="res://scenes/settings_menu.tscn" id="7_aoqxx"]
-[ext_resource type="PackedScene" uid="uid://bsp12hn3rwmoa" path="res://scenes/settings_modifiy_skin.tscn" id="8_b6q1r"]
+[ext_resource type="Script" path="res://scripts/games/space_shooter/game.gd" id="1_1y1an"]
+[ext_resource type="PackedScene" uid="uid://qo67e7jljdsi" path="res://scenes/games/space_shooter/player.tscn" id="1_46p50"]
+[ext_resource type="PackedScene" uid="uid://csecgrh6sl7eu" path="res://scenes/games/space_shooter/asteroid.tscn" id="3_jgvei"]
+[ext_resource type="AudioStream" uid="uid://8swhan1mhgje" path="res://assets/audio/poum.wav" id="4_s25qd"]
+[ext_resource type="PackedScene" uid="uid://chwd08f83pnwi" path="res://scenes/games/space_shooter/hud.tscn" id="5_1nenu"]
+[ext_resource type="PackedScene" uid="uid://bec2navabm6ik" path="res://scenes/games/space_shooter/pause_menu.tscn" id="6_s3knt"]
+[ext_resource type="PackedScene" uid="uid://k1fxbetrspqm" path="res://scenes/games/space_shooter/settings_menu.tscn" id="7_aoqxx"]
+[ext_resource type="PackedScene" uid="uid://bsp12hn3rwmoa" path="res://scenes/games/space_shooter/settings_modifiy_skin.tscn" id="8_b6q1r"]
+[ext_resource type="PackedScene" uid="uid://cvu4yqb4f0uiu" path="res://scenes/games/space_shooter/settings_modify_sound.tscn" id="9_gmryw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_874r2"]
 size = Vector2(1153, 647)
@@ -24,7 +25,7 @@ func _ready():
 
 [node name="Game" type="Node2D"]
 process_mode = 3
-script = ExtResource("1_tqv4a")
+script = ExtResource("1_1y1an")
 
 [node name="Player" parent="." instance=ExtResource("1_46p50")]
 position = Vector2(391, 461)
@@ -35,7 +36,6 @@ position = Vector2(391, 461)
 position = Vector2(518, 243)
 
 [node name="Toric_world" type="Area2D" parent="."]
-visible = false
 collision_layer = 15
 collision_mask = 15
 
@@ -49,7 +49,8 @@ debug_color = Color(0, 0.592157, 0.741176, 0)
 [node name="Sounds" type="Node2D" parent="."]
 
 [node name="LaserShoot" type="AudioStreamPlayer2D" parent="Sounds"]
-stream = ExtResource("4_d6s0x")
+stream = ExtResource("4_s25qd")
+attenuation = 3.50555e-05
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = SubResource("GDScript_4q8cx")
@@ -63,5 +64,9 @@ visible = false
 visible = false
 
 [node name="SettingsModifiySkin" parent="UI" instance=ExtResource("8_b6q1r")]
+visible = false
+
+[node name="SettingsModifySound" parent="UI" instance=ExtResource("9_gmryw")]
+visible = false
 
 [connection signal="body_exited" from="Toric_world" to="." method="_on_toric_world_body_exited"]

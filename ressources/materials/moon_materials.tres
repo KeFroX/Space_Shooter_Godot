@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dtysavs8d4w61"]
+
+[ext_resource type="Texture2D" uid="uid://dkrnkhuh30g2q" path="res://assets/texture/planets/moon.jpeg" id="1_guq10"]
+
+[resource]
+albedo_texture = ExtResource("1_guq10")

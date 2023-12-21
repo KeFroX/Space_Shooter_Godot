@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c3jajpd3lp3sr"]
 
-[ext_resource type="Script" path="res://scripts/laser.gd" id="1_qucag"]
+[ext_resource type="Script" path="res://scripts/games/space_shooter/laser.gd" id="1_c3d5n"]
 [ext_resource type="Texture2D" uid="uid://c5bevn11ca41w" path="res://assets/texture/laser/laser_blue.png" id="2_apnfe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rh0tj"]
@@ -13,7 +13,7 @@ collision_mask = 5
 gravity_scale = 0.0
 max_contacts_reported = 1
 contact_monitor = true
-script = ExtResource("1_qucag")
+script = ExtResource("1_c3d5n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 7)

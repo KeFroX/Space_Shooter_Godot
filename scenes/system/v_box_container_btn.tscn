@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyvxp46f0uy6"]
+
+[ext_resource type="Script" path="res://components/v_box_container_btn.gd" id="1_mhgkh"]
+
+[node name="VBoxContainerBtn" type="VBoxContainer"]
+z_as_relative = false
+size_flags_horizontal = 0
+size_flags_vertical = 8
+size_flags_stretch_ratio = 0.0
+script = ExtResource("1_mhgkh")
+
+[node name="BtnOption" type="Button" parent="."]
+layout_mode = 2
+text = "Option"
+
+[node name="BtnLeave" type="Button" parent="."]
+layout_mode = 2
+action_mode = 0
+keep_pressed_outside = true
+text = "Quitter cette merde"

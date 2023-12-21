@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb37cfn6cmw1h"]
+
+[ext_resource type="Script" path="res://scripts/system/planet.gd" id="1_3td7d"]
+[ext_resource type="Material" uid="uid://b5n0fxiv8oxuc" path="res://ressources/materials/earth_materials.tres" id="2_2j5lg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_x6vyt"]
+material = ExtResource("2_2j5lg")
+
+[node name="Planet" type="Node3D"]
+script = ExtResource("1_3td7d")
+
+[node name="Planet" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_x6vyt")

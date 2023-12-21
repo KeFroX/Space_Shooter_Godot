@@ -10,7 +10,7 @@ extends Control
 		
 @onready var lives = $VBoxContainer/Lives
 
-var ui_life_scene = preload("res://scenes/ui_life.tscn")
+var ui_life_scene = preload("res://scenes/games/space_shooter/ui_life.tscn")
 
 func _ready():
 	pass

@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="Space_Shooter_Godot"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://scenes/system/system.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-AutoLoad="*res://scripts/auto_load.gd"
-GlobalSkin="*res://scripts/autoload/skin.gd"
+AutoLoadSkin="*res://scripts/autoload/auto_load_skin.gd"
+AutoLoadPlanet="*res://scripts/autoload/auto_load_planet.gd"
 
 [display]
 

@@ -10,7 +10,7 @@ extends Node2D
 @onready var ui_settings_menu = $UI/SettingsMenu
 @onready var ui_settings_modifiy_skin = $UI/SettingsModifiySkin
 
-var asteroid_scene = preload("res://scenes/asteroid.tscn")
+var asteroid_scene = preload("res://scenes/games/space_shooter/asteroid.tscn")
 
 var score := 0:
 	set(value):
@@ -21,6 +21,7 @@ var game_level := 1:
 	set(value):
 		game_level = value
 		hud.game_level = game_level
+
 var small_asteroid_in_level : 
 	get :
 		return game_level * 4
@@ -40,8 +41,10 @@ func _ready():
 	ui_pause.connect("game_settings_menu_go", game_settings_menu_go)
 	
 	ui_settings_menu.connect("game_settings_menu_back", game_settings_menu_back)
+	ui_settings_menu.connect("game_settings_change_skin", game_settings_change_skin)
 	
 	ui_settings_modifiy_skin.connect("change_skin", change_skin)
+	ui_settings_modifiy_skin.connect("game_settings_modify_skin_back", game_settings_modify_skin_back)
 	
 	for asteroid in asteroids.get_children():
 		asteroid.connect("exploded", _on_asteroid_exploded)
@@ -50,12 +53,22 @@ func _process(delta):
 	if Input.is_action_just_pressed("escape"):
 		game_pause()
 
+
+
 func change_skin():
 	GlobalSkin.change_skin()
 	player.change_skin()
+	
+func game_settings_modify_skin_back():
+	ui_settings_modifiy_skin.visible = false
+	ui_settings_menu.visible = true
 
 func game_settings_menu_back():
 	ui_pause.visible = true
+	ui_settings_menu.visible = false
+	
+func game_settings_change_skin():
+	ui_settings_modifiy_skin.visible = true
 	ui_settings_menu.visible = false
 
 func game_settings_menu_go():
@@ -86,9 +99,7 @@ func _on_asteroid_exploded(pos, size, points):
 				Asteroid.AsteroidSize.MEDIUM:
 					spawn_asteroid(pos, Asteroid.AsteroidSize.TINY)
 	else :
-		small_asteroid_explode += 1
-		print(small_asteroid_explode)
-		if small_asteroid_explode == small_asteroid_in_level:
+		if(asteroids.get_child_count()==1):
 			next_level()
 	
 func next_level():
@@ -98,15 +109,13 @@ func next_level():
 		l.queue_free()
 	var witdh = toric_world_shape.position.x * 2
 	var height = toric_world_shape.position.y * 2
-	for i in game_level:		
+	for i in game_level:
 		var random_pos = Vector2(randi_range(0, witdh), randi_range(0, height))
 		spawn_asteroid(random_pos, Asteroid.AsteroidSize.BIG)
 	print("Niveau : " + str(game_level))
 	
 	
 	
-	
-						
 func spawn_asteroid(pos, size):
 	var a = asteroid_scene.instantiate()
 	a.global_position = pos

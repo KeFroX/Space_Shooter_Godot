@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bsp12hn3rwmoa"]
 
-[ext_resource type="Script" path="res://scripts/settings_modifiy_skin.gd" id="1_e4sa0"]
+[ext_resource type="Script" path="res://scripts/games/space_shooter/settings_modifiy_skin.gd" id="1_iamy3"]
 [ext_resource type="Texture2D" uid="uid://c5bevn11ca41w" path="res://assets/texture/laser/laser_blue.png" id="2_e8jp2"]
 [ext_resource type="Texture2D" uid="uid://dnkj2vhuyw55s" path="res://assets/texture/ship/player_ship_green.png" id="3_cfc3b"]
 [ext_resource type="Texture2D" uid="uid://ep2dnprmp7xk" path="res://assets/texture/fire/fire_blue_mouvement.png" id="4_vko2k"]
@@ -13,15 +13,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_e4sa0")
+script = ExtResource("1_iamy3")
 
 [node name="BtnBack" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -31.0
-offset_right = 61.0
+offset_left = 10.0
+offset_top = -41.0
+offset_right = 71.0
+offset_bottom = -10.0
 grow_vertical = 0
 text = "Retour"
 
@@ -138,6 +140,7 @@ stretch_mode = 3
 layout_mode = 2
 text = ">"
 
+[connection signal="pressed" from="BtnBack" to="." method="_on_btn_back_pressed"]
 [connection signal="pressed" from="BtnSave" to="." method="_on_btn_save_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxAsteroid/BtnPreviousAsteroid" to="." method="_on_btn_previous_asteroid_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxAsteroid/BtnNextAsteroid" to="." method="_on_btn_next_asteroid_pressed"]

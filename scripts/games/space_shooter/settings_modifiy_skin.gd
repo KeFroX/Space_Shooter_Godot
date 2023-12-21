@@ -1,14 +1,12 @@
 extends Control
 
 signal change_skin
+signal game_settings_modify_skin_back
 
 @onready var laser_texture : TextureRect = $VBoxContainer/HBoxLaser/LaserTexture
 @onready var ship_texture : TextureRect = $VBoxContainer/HBoxShip/ShipTexture
 @onready var fire_texture : TextureRect = $VBoxContainer/HBoxFire/FireTexture
 @onready var asteroid_texture : TextureRect = $VBoxContainer/HBoxAsteroid/AsteroidTexture
-#var laser_textures : Dictionary = {}
-#var ship_textures : Dictionary = {}
-#var fire_textures : Dictionary = {}
 
 var laser_list : Array = []
 var ship_list : Array = []
@@ -80,4 +78,9 @@ func _on_btn_save_pressed():
 	GlobalSkin.player["color_fire"] = fire_list[0]
 	GlobalSkin.player["color_asteroid"] = asteroid_list[0]
 	emit_signal("change_skin")
+	emit_signal("game_settings_modify_skin_back")
 
+
+
+func _on_btn_back_pressed():
+	emit_signal("game_settings_modify_skin_back")

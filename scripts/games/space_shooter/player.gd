@@ -8,7 +8,7 @@ signal laser_shoot(laser)
 @onready var sprite_fire : AnimatedSprite2D = $SpriteEffect
 @onready var laser_position = $Laser
 
-var laser_scene = preload("res://scenes/laser.tscn")
+var laser_scene = preload("res://scenes/games/space_shooter/laser.tscn")
 
 var is_shoot_cd = false
 @export var shoot_cd : float = 0.3

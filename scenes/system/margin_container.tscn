@@ -1,0 +1,95 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmbhb1s5xbh2k"]
+
+[ext_resource type="Script" path="res://scripts/system/margin_container.gd" id="1_l7xbe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kick6"]
+content_margin_bottom = 20.0
+
+[node name="MarginContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_l7xbe")
+
+[node name="home_container" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="v_box_btn_planets" type="VBoxContainer" parent="home_container"]
+z_as_relative = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="home_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="btn_settings" type="Button" parent="home_container/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="btn_leave" type="Button" parent="home_container/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Leave"
+
+[node name="lbl_title" type="Label" parent="home_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Title Game"
+
+[node name="v_box_info_planet" type="VBoxContainer" parent="home_container"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="lbl_name" type="Label" parent="home_container/v_box_info_planet"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kick6")
+text = "Sun"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lbl_size" type="Label" parent="home_container/v_box_info_planet"]
+layout_mode = 2
+text = "Size :"
+
+[node name="lbl_orbite_distance" type="Label" parent="home_container/v_box_info_planet"]
+layout_mode = 2
+text = "Orbite disctance : "
+
+[node name="lbl_description" type="Label" parent="home_container/v_box_info_planet"]
+layout_mode = 2
+text = "Description : This is the planet"
+
+[node name="settings_container" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="settings_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Settings"
+
+[node name="btn_back_to_menu" type="Button" parent="settings_container"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Back"
+
+[connection signal="pressed" from="home_container/VBoxContainer/btn_settings" to="." method="_on_btn_settings_pressed"]
+[connection signal="pressed" from="home_container/VBoxContainer/btn_leave" to="." method="_on_btn_leave_pressed"]
+[connection signal="pressed" from="settings_container/btn_back_to_menu" to="." method="_on_btn_settings_pressed"]
